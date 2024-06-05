@@ -1,6 +1,7 @@
 import jdk.jshell.spi.ExecutionControl;
 import org.example.RechercheVille;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -15,9 +16,13 @@ public class RechercheVilleTest {
             "Amsterdam", "Vienne", "Sydney", "New York", "Londres", "Bangkok",
             "Hong Kong", "Dubaï", "Rome", "Istanbul");
 
+    @Before
+    public void setUp() {
+        rechercheVille = new RechercheVille(villes);
+    }
     @Test
     public void When_recherche_contient_moins_2_caracteres() throws ExecutionControl.NotImplementedException {
-        rechercheVille = new RechercheVille(villes);
+
         Assert.assertThrows(RechercheVille.NotFoundException.class, () -> {
             rechercheVille.rechercher("a");
         });
